@@ -73,15 +73,19 @@ function followSolution(maze, end) {
     var width = maze[0].length;
 
     var cur_step = parseInt( maze[end[0]][end[1]] );
-    console.log(cur_step)
+    console.log(cur_step);
+    var steps = cur_step + 1;
     
     maze[end[0]][end[1]] = 'o';
+  
     
     while (cur_step > 1) {
         y = end[0];
         x = end[1];
         console.log(end);
         console.log(cur_step);
+      
+
         var get_out = 0;
         
         // check each of the neighbours (up down left right)
@@ -95,17 +99,21 @@ function followSolution(maze, end) {
                     end = [y+ny, x+nx];
                     cur_step = parseInt( maze[end[0]][end[1]] );
                     maze[y+ny][x+nx] = 'o';
+                    
                     get_out = 1;
                     break;
                 }
 
             }
-            if (get_out == 1) 
+            if (get_out == 1)
                 break;
-
+            
         }
-    
+        
+       
     }
+    document.getElementById('answer1').innerHTML = 'Amount of steps ' + steps;
+
 }
 
 function displayMaze(maze) {
